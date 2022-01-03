@@ -1,0 +1,12 @@
+
+.idea/
+
+venv/
+
+tests/
+
+tema/__pycache__/
+
+check_test.py
+
+run_tests.sh

@@ -1,0 +1,83 @@
+# Tema 1
+
+Organizare
+-
+***Sumar***
+
+Tema se bazează pe o implementare a cazului Multiple Producers Multiple
+Consumers. Aici, marketplace-ul are rolul de a face legătura dintre aceștia,
+ținând cont de numărul de produse pentru a limita activitatea producătorilor,
+și punând la dispoziție aceste produse pentru consumatori.
+
+***Producer***
+
+Producătorii creează în continuu, după o listă inițializată la pornirea
+programului, produse noi, cu scopul de a fi trimise către marketplace.
+Între fiecare trimitere se așteaptă un anumit interval, în funcție de
+starea marketplace-ului (dacă posedă prea multe produse de la acest
+producător sau nu).
+
+***Consumer***
+
+Consumatorii operează pe sesiuni de cumpărături. Fiecare sesiune
+începe prin obținerea unui cărucior în care să stocheze produsele
+alese. Consumatorul urmărește o listă, luând produse din marketplace
+dacă acestea există. În caz contrar, consumatorul așteaptă un interval
+prestabilit, în speranța că produsul dorit va intra pe stoc.
+
+Consumatorul se poate răzgândi și returna un produs, acesta devenind
+disponibil pentru un alt consumator.
+
+Sesiunea de cumpărături se încheie în momentul în care consumatorul
+plasează comanda, astfel păstrând în mod permanent produsele alese.
+
+Într-un fel, consumatorii sunt și producători pentru marketplace, întrucât
+aceștia au opțiunea de a pune la loc un produs din marketplace, astfel
+contribuind la umplerea acestuia.
+
+***Marketplace***
+
+În cadrul modului folosesc un Type Alias ``ProductInfo`` pentru a asocia
+un produs cu producătorul lui.
+
+***Utilitatea temei***
+
+Consider că tema este utilă pentru familiarizarea cu limbajul Python, întrucât
+la APD se învață la mod general concepte de multithreading.
+
+***Eficiența temei***
+
+Consider că implementarea mea este una eficientă. Pentru a optimiza și mai
+mult, unele dicționare pot fi transformate în liste, folosind indexul drept
+cheie.
+
+***Cazuri speciale***
+
+Am acoperit și unele cazuri care nu sunt acoperite în teste, precum
+o operație invalidă pentru consumator
+(``Consumer.attempt_operation() | Linia 87``)
+sau returnarea unui produs inexistent în cărucior
+(``Marketplace.remove_from_cart() | Linia 164``).
+
+Implementare
+-
+Tema implementează întregul enunț, obținând punctaj maxim pe teste.
+
+Sunt prezente funcționalități extra precum verificarea operațiilor
+valide pentru consumatori, menționate anterior.
+
+Consider că orice fișier README existent în repository ar fi trebuit,
+de fapt, introdus în enunțul temei, pentru a avea toate informațiile
+necesare realizării acesteia într-un singur loc.
+
+Tema m-a ajutat să înțeleg care sunt operațiile atomice built-in în
+python (``list.append()``, introducerea în dicționar ``D[x] = y`` etc.)
+
+Resurse utilizate
+-
+Operații atomice în Python:
+https://docs.python.org/3/faq/library.html#what-kinds-of-global-value-mutation-are-thread-safe
+
+Git
+-
+https://github.com/RaresPRT/Tema1-ASC
